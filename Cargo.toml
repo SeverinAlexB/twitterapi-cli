@@ -1,0 +1,41 @@
+[package]
+name = "twitterapi-cli"
+version = "0.1.0"
+edition = "2021"
+description = "CLI tool for querying Twitter/X data via twitterapi.io"
+
+[[bin]]
+name = "twitterapi-cli"
+path = "src/main.rs"
+
+[dependencies]
+# CLI
+clap = { version = "4", features = ["derive"] }
+
+# Async
+tokio = { version = "1", features = ["full"] }
+
+# HTTP
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilities
+dirs = "6"
+sha2 = "0.10"
+hex = "0.4"
+chrono = { version = "0.4", features = ["serde"] }
+
+# Ctrl+C handling
+ctrlc = { version = "3", features = ["termination"] }
