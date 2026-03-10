@@ -143,7 +143,8 @@ pub fn format_user_list(users: &[User], label: &str) -> String {
         if let Some(ref desc) = user.description {
             if !desc.is_empty() {
                 let short = if desc.len() > 120 {
-                    format!("{}...", &desc[..120])
+                    let end = desc.floor_char_boundary(120);
+                    format!("{}...", &desc[..end])
                 } else {
                     desc.clone()
                 };
