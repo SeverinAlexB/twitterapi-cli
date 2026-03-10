@@ -20,8 +20,9 @@ impl AppConfig {
             .unwrap_or_else(|| PathBuf::from(".cache"))
             .join("twitterapi-cli");
 
-        let config_dir = dirs::config_dir()
-            .unwrap_or_else(|| PathBuf::from(".config"))
+        let config_dir = dirs::home_dir()
+            .unwrap_or_else(|| PathBuf::from("."))
+            .join(".config")
             .join("twitterapi-cli");
 
         let file_config = load_config_file(&config_dir);
